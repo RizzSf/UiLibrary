@@ -9,13 +9,13 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RizzS
 ThemeManager
 
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RizzSf/UiLibrary/refs/heads/main/Obsidian/LibraryMain/ThemeManager.lua"))()
+local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/RizzSf/UiLibrary/refs/heads/main/Obsidian/LibraryMain/ThemeManager.lua"))()
 ```
 
 SaveManager
 
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RizzSf/UiLibrary/refs/heads/main/Obsidian/LibraryMain/Savemanager.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/RizzSf/UiLibrary/refs/heads/main/Obsidian/LibraryMain/Savemanager.lua"))()
 ```
 
 Then, create a window:
