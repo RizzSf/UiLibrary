@@ -1,0 +1,71 @@
+local MetheusLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/RizzSf/UiLibrary/refs/heads/main/Metheus/LibraryMain/source.lua')))()
+
+local Window = MetheusLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "MetheusTest"})
+
+local missforkick = false -- true / false
+
+_G.Key = "Key here"
+_G.KeyInput = ""
+
+function CorrectKeyNotify()
+    MetheusLib:MakeNotification({
+        Name = "Correct Key! Loading script!",
+        Content = "Text here",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+function IncorrectKeyNotify()
+    MetheusLib:MakeNotification({
+        Name = "Incorrect Key! Try again",
+        Content = "Text here",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+function LoadScript()
+    print("script here")
+end
+
+local Tab = Window:AddTab({
+    Name = "Login",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section = Tab:CreateSection({
+    Name = "Login"
+})
+
+Tab:CreateTextbox({
+    Name = "Enter Key",
+    Default = "Input",
+    TextDisappear = true,
+    Callback = function(Value)
+        _G.KeyInput = Value
+    end      
+})
+
+Tab:CreateButton({
+    Name = "Check Key",
+    Callback = function()
+        if _G.KeyInput == _G.Key then
+            CorrectKeyNotify()
+            LoadScript()
+        else
+            IncorrectKeyNotify()
+            if missforkick then
+                game.Players.LocalPlayer:Kick("Incorrect Key! You have been kicked.")
+            end
+        end
+    end    
+})
+
+Tab:CreateButton({
+    Name = "Get Key",
+    Callback = function()
+        setclipboard("Your link, Text, here!")
+    end    
+})
