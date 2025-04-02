@@ -3042,8 +3042,8 @@ function MetheusLib:MakeWindow(WindowConfig)
 
     MetheusLib:MakeNotification(
         {
-            Name = "UI Library Upgrade",
-            Content = "New UI Library Available at sirius.menu/discord and sirius.menu/rayfield",
+            Name = "UI System",
+            Content = "Thanks for Useing Library :>",
             Time = 5
         }
     )
