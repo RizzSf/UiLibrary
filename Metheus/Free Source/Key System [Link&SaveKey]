@@ -1,0 +1,117 @@
+local MetheusLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/RizzSf/UiLibrary/refs/heads/main/Metheus/LibraryMain/source.lua')))()
+
+local Window = MetheusLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "MetheusTest"})
+
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local pastebinRawURL = "You link here"
+local keyStorageFile = "SavedKey"
+
+local function GetKeyFromPastebin()
+    local success, result = pcall(function()
+        return game:HttpGet(pastebinRawURL)
+    end)
+    return success and result or nil
+end
+
+local function GetSavedKey()
+    if isfile(keyStorageFile) then
+        return readfile(keyStorageFile)
+    end
+    return nil
+end
+
+local function SaveKey(key)
+    writefile(keyStorageFile, key)
+end
+
+local function DeleteSavedKey()
+    if isfile(keyStorageFile) then
+        delfile(keyStorageFile)
+    end
+end
+
+local function ExecuteScript()
+    wait(1.5)
+    MetheusLib:Destroy()
+    print("script here")
+end
+
+
+local function CheckKey(inputKey)
+    local correctKey = GetKeyFromPastebin()
+    if not correctKey then
+        MetheusLib:MakeNotification({
+            Name = "Error",
+            Content = "Failed to retrieve key from Pastebin",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+        return
+    end
+
+    if inputKey == correctKey then
+        SaveKey(inputKey)
+        MetheusLib:MakeNotification({
+            Name = "Correct Key",
+            Content = "You Text here",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+        task.wait(1)
+        ExecuteScript()
+    else
+        MetheusLib:MakeNotification({
+            Name = "Incorrect Key",
+            Content = "You Text here",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+    end
+end
+
+local inputKey = ""
+
+local Tab = Window:AddTab({
+    Name = "Login",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section = Tab:CreateSection({
+    Name = "Login"
+})
+
+Tab:CreateTextbox({
+    Name = "Enter Key",
+    Default = "Input",
+    TextDisappear = true,
+    Callback = function(Value)
+        inputKey = Value
+    end      
+})
+
+Tab:CreateButton({
+    Name = "Check Key",
+    Callback = function()
+        if inputKey and inputKey ~= "" then
+            CheckKey(inputKey)
+        else
+            MetheusLib:MakeNotification({
+                Name = "Error",
+                Content = "Please enter a key",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+        end
+    end    
+})
+
+Tab:CreateButton({
+    Name = "Get Key",
+    Callback = function()
+        setclipboard("Your link, Text, here!")
+    end    
+})
