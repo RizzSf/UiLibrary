@@ -1,5 +1,5 @@
 # Metheus [Source Orion lib]
-This documentation is for the stable release of Orion Library.
+100% Safe Orion lib
 
 ## Booting the Library
 ```lua
