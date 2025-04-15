@@ -75,7 +75,7 @@ function RobloxLib:MakeWindow(settings)
     TitleLib.TextScaled = true
     TitleLib.TextSize = 14
 
-    -- Close button functionalit
+    -- Close button functionality
     X.Name = "X"
     X.Parent = RobFrame
     X.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -108,55 +108,29 @@ function RobloxLib:MakeWindow(settings)
     end
 end
 
--- Create notification function
-function RobloxLib:CreateNotification(settings)
-    settings = settings or {}
-    game.StarterGui:SetCore("SendNotification", {
-        Title = settings.Title or "Roblox Lib",
-        Text = settings.Contents or "Made by LunaPhs!",
-        Duration = settings.Duration or 5
-    })
-end
+-- Create notification functio
 
 function RobloxLib:MakeScroll(settings)
-local RbSc = Instance.new("ScrollingFrame")
-local UIListLayout = Instance.new("UIListLayout")
+    local RbSc = Instance.new("ScrollingFrame")
+    local UIListLayout = Instance.new("UIListLayout")
 
-RbSc.Name = "RbSc"
-RbSc.Parent = game.StarterGui.RobloxLib.RobFrame
-RbSc.Active = true
-RbSc.BackgroundColor3 = Color3.new(0.345098, 0.345098, 0.345098)
-RbSc.BorderColor3 = Color3.new(0, 0, 0)
-RbSc.BorderSizePixel = 0
-RbSc.Position = UDim2.new(0.0153846154, 0, 0.103092782, 0)
-RbSc.Size = UDim2.new(0, 566, 0, 254)
-RbSc.CanvasSize = settings.Size or UDim2.new(0, 0, 6, 0)
-RbSc.ScrollBarThickness = settings.Barsize or 8
+    RbSc.Name = "RbSc"
+    RbSc.Parent = game.Players.LocalPlayer.PlayerGui.RobloxLib.RobFrame
+    RbSc.Active = true
+    RbSc.BackgroundColor3 = Color3.new(0.345, 0.345, 0.345)
+    RbSc.BorderSizePixel = 0
+    RbSc.Position = UDim2.new(0.015, 0, 0.103, 0)
+    RbSc.Size = UDim2.new(0, 566, 0, 254)
+    RbSc.CanvasSize = UDim2.new(0, 0, 1, 0)
+    RbSc.ScrollBarThickness = settings.Barsize or 8
 
-UIListLayout.Parent = RbSc
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-end
+    UIListLayout.Parent = RbSc
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-function RobloxLib:AddButton(settings)
-    local TextButton = Instance.new("TextButton")
-
-    TextButton.Parent = game.StarterGui.RobloxLib.RobFrame.RbSc
-    TextButton.BackgroundColor3 = Color3.new(0.278431, 0.278431, 0.278431)
-    TextButton.BorderColor3 = Color3.new(0, 0, 0)
-    TextButton.BorderSizePixel = 0
-    TextButton.Size = UDim2.new(0, 566, 0, 50)
-    TextButton.Font = Enum.Font.SourceSans
-    TextButton.TextColor3 = RobloxLib.Color.Text
-    TextButton.TextSize = settings.TextSize or 23
-    TextButton.Text = settings.Text or "Button"
-    TextButton.TextWrapped = true
-    TextButton.TextXAlignment = Enum.TextXAlignment.Left
-
-    if settings.Callback then
-        TextButton.MouseButton1Click:Connect(function()
-            settings.Callback()
-        end)
-    end
+    -- CanvasSize
+    UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        RbSc.CanvasSize = UDim2.new(0, 0, 0, UIListLayout.AbsoluteContentSize.Y)
+    end)
 end
 
 function RobloxLib:AddToggle(settings)
@@ -326,6 +300,15 @@ function RobloxLib:AddTextbox(settings)
     if settings.SaveText and savedText ~= "" then
         TextBox.Text = savedText
     end
+end
+
+function RobloxLib:CreateNotification(settings)
+    settings = settings or {}
+    game.StarterGui:SetCore("SendNotification", {
+        Title = settings.Title or "Roblox Lib",
+        Text = settings.Contents or "Made by LunaPhs!",
+        Duration = settings.Duration or 5
+    })
 end
 
 return RobloxLib
