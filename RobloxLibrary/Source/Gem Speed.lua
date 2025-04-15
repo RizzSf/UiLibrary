@@ -75,7 +75,7 @@ function RobloxLib:MakeWindow(settings)
     TitleLib.TextScaled = true
     TitleLib.TextSize = 14
 
-    -- Close button functionality
+    -- Close button functionalit
     X.Name = "X"
     X.Parent = RobFrame
     X.BackgroundColor3 = Color3.new(1, 1, 1)
