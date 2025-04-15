@@ -108,23 +108,6 @@ function RobloxLib:MakeWindow(settings)
     end
 end
 
--- Resize window based on screen size
-local function updateWindowSize()
-    local screenWidth = game:GetService("Workspace").CurrentCamera.ViewportSize.X
-    local screenHeight = game:GetService("Workspace").CurrentCamera.ViewportSize.Y
-
-    local scaleWidth = screenWidth * 0.4
-    local scaleHeight = screenHeight * 0.3
-
-    RobFrame.Size = UDim2.new(0, scaleWidth, 0, scaleHeight)
-end
-
-game:GetService("Workspace").CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
-    updateWindowSize()
-end)
-
-updateWindowSize()
-
 -- Create notification function
 function RobloxLib:CreateNotification(settings)
     settings = settings or {}
