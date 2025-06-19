@@ -1,48 +1,75 @@
 # 3itx's UI Lib 
 ### This is a Open-Source UI lib using Wax to compile into text file and i've decided to release this to the public since i don't need this ui lib no more so yeah have fun using it 
 
-## Example
+## Library
 
 ```lua
-   local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Just3itx/3itx-UI-LIB/refs/heads/main/Lib"))() 
-  local FlagsManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Just3itx/3itx-UI-LIB/refs/heads/main/ConfigManager"))()
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Just3itx/3itx-UI-LIB/refs/heads/main/Lib"))() 
+local FlagsManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Just3itx/3itx-UI-LIB/refs/heads/main/ConfigManager"))()
+```
+## Window
 
-  local main = lib:Load({
-      Title = 'Cool Title',
-      ToggleButton = "RBXID or GetCustomasset",
-	  BindGui = Enum.KeyCode.RightControl,
-  })
+```lua
+local main = lib:Load({
+    Title = 'Cool Title',
+    ToggleButton = "RBXID or GetCustomasset",
+    BindGui = Enum.KeyCode.RightControl,
+})
+```
+## Tabs
 
-  local Main = main:AddTab("Main")
-  main:SelectTab()
+```lua
+local Main = main:AddTab("Main")
+```
+## Section
 
-  local MainSection = Main:AddSection({Title = "Section Name", Description = "Description", Defualt = false , Locked = false})
-  local GroupButtons =   MainSection:AddGroupButton()
+```lua
+local MainSection = Main:AddSection({Title = "Section Name", Description = "Description", Defualt = false , Locked = false})
+```
+## GroupButtons
 
-  GroupButtons:AddButton({
+```lua
+local GroupButtons =   MainSection:AddGroupButton()
+```
+## Button
+
+```lua
+GroupButtons:AddButton({
     Title = "Print Woah",
     Callback = function()
-    print("Woah")
+    	print("Woah")
     end,
-  })
-  GroupButtons:AddButton({
+})
+--[[
+GroupButtons:AddButton({
     Title = "Print Woah2",
     Variant = "Outline",
     Callback = function()
-    print("Woah2")
+    	print("Woah2")
     end,
-  })
-  MainSection:AddParagraph({Title = "Hello There",Description = "HI"})
+})
+]]
+```
+## Paragraph
 
-  MainSection:AddToggle("ConfigToStoreName", {
+```lua
+MainSection:AddParagraph({Title = "Hello There",Description = "HI"})
+```
+## Toggle
+
+```lua
+MainSection:AddToggle("ConfigToStoreName", {
     Title = "Toggle",
     Default = false,
     Description = "lol",
     Callback = function(isEnabled)
-      print(isEnabled)
+    	print(isEnabled)
     end,
-  })
+})
+```
+## Toggle
 
+```lua
 MainSection:AddDropdown("EpicDropDownName", {
     Title = "Dropdown",
     Description = "",
@@ -54,7 +81,10 @@ MainSection:AddDropdown("EpicDropDownName", {
         table.foreach(balls,print)
     end
 })
+```
+## Colorpicker
 
+```lua
 MainSection:AddColorpicker("Color", {
     Title = "ColorPicker",
     Default = Color3.new(1.000000, 1.000000, 1.000000),
@@ -62,7 +92,10 @@ MainSection:AddColorpicker("Color", {
         print(selectedColor)
     end,
 })
+```
+## Slider
 
+```lua
 MainSection:AddSlider("EpixSlider", {
     Title = "Cool-Slider",
     Description = "",
@@ -74,11 +107,11 @@ MainSection:AddSlider("EpixSlider", {
       print(value)
     end,
 })
+```
+## Dialog
 
-MainSection:AddButton({
-	Title = "Open Dialog",
-	Callback = function()
-	lib:Dialog({
+```lua
+lib:Dialog({
     Title = "Hello",
     Content = "Test",
     Buttons = {
@@ -98,9 +131,7 @@ MainSection:AddButton({
         }
     }
 })
-end,
-})
-
+```
 MainSection:AddBind("JumpKeybind", {
     Title = "Jump",
     Default = Enum.KeyCode.Space,
