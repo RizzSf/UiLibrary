@@ -132,13 +132,18 @@ lib:Dialog({
     }
 })
 ```
+## Keybind
+
+```lua
 MainSection:AddBind("JumpKeybind", {
     Title = "Jump",
     Default = Enum.KeyCode.Space,
     Callback = function() print("Pressed") end
 })
+```
+## Textbox
 
-
+```lua
 MainSection:AddTextbox({
     Title = "Textbox",
     Default = "",
@@ -149,12 +154,18 @@ MainSection:AddTextbox({
         print(Value)
     end
 })
+```
+## Config
 
+```lua
 local Config = main:AddTab("Config")
 FlagsManager:SetLibrary(lib)
 FlagsManager:SetIgnoreIndexes({})
 FlagsManager:SetFolder("Config/GameName")
 FlagsManager:InitSaveSystem(Config)
+```
+## Notify
 
+```lua
 lib:Notification('Hello', 'Hello, Thanks for using 3itx-UI-Lib',3)
 ```
