@@ -67,7 +67,7 @@ MainSection:AddToggle("ConfigToStoreName", {
     end,
 })
 ```
-## Toggle
+## Dropdown
 
 ```lua
 MainSection:AddDropdown("EpicDropDownName", {
