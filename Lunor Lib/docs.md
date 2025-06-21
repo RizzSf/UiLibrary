@@ -1,5 +1,5 @@
 # 3itx's UI Lib 
-### This is a Open-Source UI lib using Wax to compile into text file and i've decided to release this to the public since i don't need this ui lib no more so yeah have fun using it 
+### Open Source & Free
 
 ## Library
 
