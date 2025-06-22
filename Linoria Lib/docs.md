@@ -59,6 +59,10 @@ local Tabs = {
 local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
 ```
 
+```lua
+local RightGroupBox = Tabs.Main:AddRightGroupbox('Groupbox')
+```
+
 You can add groupboxes on the left or right side of a tab.
 
 ---
