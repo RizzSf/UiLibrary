@@ -29,7 +29,7 @@ local MainSection = Main:AddSection({Title = "Section Name", Description = "Desc
 ## GroupButtons
 
 ```lua
-local GroupButtons =   MainSection:AddGroupButton()
+local GroupButtons = MainSection:AddGroupButton()
 ```
 ## Button
 
